@@ -1,3 +1,5 @@
+let score = 0;
+
 $('button').on('click', () => {
   console.log('click works');
   // When the user clicks the button, populate the squares
@@ -22,7 +24,26 @@ const createSquares = (numberOfSquares) => {
 
 const disappearSquares = (e) => {
   // e is short for event
+
+  // To retrieve a property
+  const color = $(e.currentTarget).css('background-color');
+  checkValidPoke(color);
+
+  // Setting a property using jQuery
   $(e.currentTarget).css('opacity', 0);
+}
+
+// lets write a function called (checkValidPoke) that takes that color
+// string and if it is blue lets update a global score variable.
+const checkValidPoke = (colorAsString) => {
+
+  if (colorAsString === 'rgb(0, 0, 255)') {
+    score++
+  } else {
+    score--
+  };
+
+$('h1').text('scoreboard: ' + score);
 }
 
 // Write a function, that when we apply click it randomizes squares to
