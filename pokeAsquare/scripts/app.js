@@ -12,12 +12,17 @@ $('button').on('click', () => {
 const createSquares = (numberOfSquares) => {
   for (let i = 0; i < numberOfSquares; i++) {
     // creating squares
-    const $div = $('<div/>');
+    const $div = $('<div/>').on('click', disappearSquares);
     // This is where the color is applied
     applyRandomColor($div);
     // attach to the square class
     $('.squares').append($div);
   }
+};
+
+const disappearSquares = (e) => {
+  // e is short for event
+  $(e.currentTarget).css('opacity', 0);
 }
 
 // Write a function, that when we apply click it randomizes squares to
